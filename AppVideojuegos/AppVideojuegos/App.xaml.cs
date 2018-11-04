@@ -33,6 +33,8 @@ namespace AppVideojuegos
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
+            //Inicializamos la base de datos
+            DataAccess.EliminarBase();
             DataAccess.InitializeDatabase();
         }
 

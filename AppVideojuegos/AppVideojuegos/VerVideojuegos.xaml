@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="AppVideojuegos.VerVideojuegos"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppVideojuegos"
+    xmlns:base="using:ClassLibrary"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel>
+        <Button Click="Vieri">Vier</Button>
+        <GridView Name="SalidaVideojuegos" ItemsSource="{Binding}">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="base:Videojuego">
+                        <StackPanel>
+                            <TextBlock Text="{x:Bind nombre}" Width="300"/>
+                            <TextBlock Text="{x:Bind compania}" Width="300"/>
+                            <TextBlock Text="{x:Bind genero}" Width="300"/>
+                            <TextBlock Text="{x:Bind plataforma}" Width="300"/>
+                            <TextBlock Text="{x:Bind fechaPubli}" Width="300"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+    </StackPanel>
+</Page>

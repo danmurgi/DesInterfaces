@@ -26,13 +26,35 @@ namespace AppVideojuegos
         public MainPage()
         {
             this.InitializeComponent();
+
+            //Inicializamos el frame del menu
+            MenuFrame.Navigate(typeof(AltaCompanias));
         }
 
-        private void AddData(object sender, RoutedEventArgs e)
+        //Eventos del menu
+        private void AltaComp_Click(object sender, RoutedEventArgs e) {
+            MenuFrame.Navigate(typeof(AltaCompanias));
+        }
+
+        private void AltaVideojuegos_Click(object sender, RoutedEventArgs e)
         {
-            DataAccess.AddData(Input_Box.Text);
-
-            Salida.ItemsSource = DataAccess.GetData();
+            MenuFrame.Navigate(typeof(AltaVideojuegos));
         }
+
+        private void VerComp_Click(object sender, RoutedEventArgs e) {
+            MenuFrame.Navigate(typeof(VerCompanias));
+        }
+        private void VerVideojuegos_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFrame.Navigate(typeof(VerVideojuegos));
+        }
+        
+        /*private void AddData(object sender, RoutedEventArgs e)
+        {
+            DataAccess.InsertVideojuegos(Input_NomJuego.Text, Input_Compania.Text, Input_Genero.Text, Input_Plataforma.Text, Input_FechaPubli.Text);
+
+            Salida.ItemsSource = DataAccess.GetVideojuegos();
+        }*/
+        
     }
 }

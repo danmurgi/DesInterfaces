@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="AppVideojuegos.AltaCompanias"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AppVideojuegos"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel>
+        <TextBox Name="Input_NomComp" 
+                     Header="Nombre de la compañía" 
+                     Margin="24, 24, 0, 0"
+                     MaxLength="30"
+                     Width="400"
+                     HorizontalAlignment="Left"/>
+
+        <TextBox Name="Input_FechaIni"
+                     Header="Fecha de inicio" 
+                     Margin="24, 24, 0, 0"
+                     MaxLength="30"
+                     Width="400"
+                     HorizontalAlignment="Left"/>
+
+        <TextBox Name="Input_NumTrab"
+                     Header="Número de trabajadores" 
+                     Margin="24, 24, 0, 0"
+                     MaxLength="30"
+                     Width="400"
+                     HorizontalAlignment="Left"/>
+        
+        <Button Click="AddComp" 
+                Content="Enviar"
+                Margin="24, 24, 0, 0"/>
+    </StackPanel>
+        
+</Page>

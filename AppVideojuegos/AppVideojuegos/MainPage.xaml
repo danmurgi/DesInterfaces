@@ -11,17 +11,29 @@
 
     <Grid>
         <StackPanel>
-            <TextBox Name="Input_Box"></TextBox>
-            <Button Click="AddData">Add</Button>
 
-            <GridView Name="Salida" ItemsSource="{Binding}">
-                <GridView.ItemTemplate>
-                    <DataTemplate x:DataType="base:Videojuego">
-                        <TextBlock Text="{x:Bind nombre}"/>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
+            <StackPanel Orientation="Horizontal">
+                <Button Name="Bt_VerCompanias"
+                        Content="Ver Compañías"
+                        Margin="0, 0, 20, 0"
+                        Click="VerComp_Click"/>
+                <Button Name="Bt_AltaCompanias"
+                        Content="Alta de Compañías"
+                        Margin="0, 0, 20, 0"
+                        Click="AltaComp_Click"/>
+                <Button Name="Bt_VerVideojuegos"
+                        Content="Ver Videojuegos"
+                        Margin="0, 0, 20, 0"
+                        Click="VerVideojuegos_Click"/>
+                <Button Name="Bt_AltaVideojuegos"
+                        Content="Alta de Videojuegos"
+                        Margin="0, 0, 20, 0"
+                        Click="AltaVideojuegos_Click"/>
+                
+            </StackPanel>
+            <Frame Name="MenuFrame">
 
+            </Frame>
         </StackPanel>
     </Grid>
 </Page>

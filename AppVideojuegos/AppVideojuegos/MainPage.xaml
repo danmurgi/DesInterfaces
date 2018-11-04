@@ -9,10 +9,11 @@
     xmlns:base="using:ClassLibrary"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <StackPanel>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+        <StackPanel Margin="24">
             <StackPanel Orientation="Horizontal">
+
                 <Button Name="Bt_VerCompanias"
                         Content="Ver Compañías"
                         Margin="0, 0, 20, 0"
@@ -29,11 +30,13 @@
                         Content="Alta de Videojuegos"
                         Margin="0, 0, 20, 0"
                         Click="AltaVideojuegos_Click"/>
-                
+
             </StackPanel>
             <Frame Name="MenuFrame">
 
             </Frame>
         </StackPanel>
+        
+
     </Grid>
 </Page>

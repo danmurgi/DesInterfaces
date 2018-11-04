@@ -30,7 +30,8 @@ namespace AppVideojuegos
 
             private void AddComp(object sender, RoutedEventArgs e)
             {
-            DataAccess.InsertCompanias(Input_NomComp.Text, Input_FechaIni.Text, Input_NumTrab.Text);
+            String dateString = Input_FechaIni.Date.ToString("dd/MM/yyyy");
+            DataAccess.InsertCompanias(Input_NomComp.Text, dateString, Input_NumTrab.Text);
             
             }
         }

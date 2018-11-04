@@ -5,6 +5,7 @@
     xmlns:local="using:AppVideojuegos"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:base="using:ClassLibrary"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -16,12 +17,20 @@
                      Width="400"
                      HorizontalAlignment="Left"/>
 
+        <!--<ComboBox Name="Input_Compania"
+                    Header="Compañía"
+                    ItemsSource="{base:Compania}"
+                    Margin="24,24,0,0"
+                    Width="400"
+                    HorizontalAlignment="Left">
+                    
+            
+        </ComboBox>-->
         <TextBox Name="Input_Compania"
-                     Header="Compañía" 
-                     Margin="24, 24, 0, 0"
-                     MaxLength="30"
-                     Width="400"
-                     HorizontalAlignment="Left"/>
+                    Header="Compañía"
+                    Margin="24,24,0,0"
+                    Width="400"
+                    HorizontalAlignment="Left"/>
 
         <TextBox Name="Input_Genero"
                      Header="Género" 
@@ -37,12 +46,10 @@
                      Width="400"
                      HorizontalAlignment="Left"/>
 
-        <TextBox Name="Input_FechaPubli"
-                     Header="Fecha de publicación" 
-                     Margin="24, 24, 0, 0"
-                     MaxLength="30"
-                     Width="400"
-                     HorizontalAlignment="Left"/>
+        <DatePicker Name="Input_FechaPubli" Header="Fecha de publicación"
+            Margin="24, 24, 0, 0"
+            Width="400"
+            HorizontalAlignment="Left"/>
 
         <Button Click="AddData" 
                 Content="Enviar"

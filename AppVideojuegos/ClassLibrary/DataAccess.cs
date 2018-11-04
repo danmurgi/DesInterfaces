@@ -30,7 +30,8 @@ namespace ClassLibrary
                     "compania varchar(35)," +
                     "genero varchar(25)," +
                     "plataforma varchar(15)," +
-                    "fecha_publi TEXT" +
+                    "fecha_publi TEXT," +
+                    "FOREIGN KEY(compania) REFERENCES compania(nom_comp)" +
                     ")";
 
                 //Instanciamos los comandos

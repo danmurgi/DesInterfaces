@@ -28,8 +28,5 @@ namespace AppVideojuegos
         {
             this.InitializeComponent();
         }
-        private void Vieri(object sender, RoutedEventArgs e) {
-            SalidaVideojuegos.ItemsSource = DataAccess.GetVideojuegos();
-        }
     }
 }

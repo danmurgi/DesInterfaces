@@ -16,12 +16,10 @@
                      Width="400"
                      HorizontalAlignment="Left"/>
 
-        <TextBox Name="Input_FechaIni"
-                     Header="Fecha de inicio" 
-                     Margin="24, 24, 0, 0"
-                     MaxLength="30"
-                     Width="400"
-                     HorizontalAlignment="Left"/>
+        <DatePicker Name="Input_FechaIni" Header="Fecha de creación"
+            Margin="24, 24, 0, 0"
+            Width="400"
+            HorizontalAlignment="Left"/>
 
         <TextBox Name="Input_NumTrab"
                      Header="Número de trabajadores" 

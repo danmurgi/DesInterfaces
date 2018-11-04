@@ -2,6 +2,11 @@
     x:Class="AppVideojuegos.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:AppVideojuegos">
+    xmlns:local="using:AppVideojuegos"
+    RequestedTheme="Light">
+
+    <Application.Resources>
+        <SolidColorBrush x:Key="tema1" Color="{ThemeResource SystemAccentColor}"/>
+    </Application.Resources>
 
 </Application>

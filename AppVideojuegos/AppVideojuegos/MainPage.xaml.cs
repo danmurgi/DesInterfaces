@@ -48,13 +48,7 @@ namespace AppVideojuegos
         {
             MenuFrame.Navigate(typeof(VerVideojuegos));
         }
-        
-        /*private void AddData(object sender, RoutedEventArgs e)
-        {
-            DataAccess.InsertVideojuegos(Input_NomJuego.Text, Input_Compania.Text, Input_Genero.Text, Input_Plataforma.Text, Input_FechaPubli.Text);
 
-            Salida.ItemsSource = DataAccess.GetVideojuegos();
-        }*/
         
     }
 }

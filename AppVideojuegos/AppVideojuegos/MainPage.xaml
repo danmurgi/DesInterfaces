@@ -6,19 +6,22 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:base="using:ClassLibrary"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
         <StackPanel>
             <TextBox Name="Input_Box"></TextBox>
             <Button Click="AddData">Add</Button>
-            <ListView Name="Output">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding}"/>
+
+            <GridView Name="Salida" ItemsSource="{Binding}">
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="base:Videojuego">
+                        <TextBlock Text="{x:Bind nombre}"/>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </GridView.ItemTemplate>
+            </GridView>
+
         </StackPanel>
     </Grid>
 </Page>

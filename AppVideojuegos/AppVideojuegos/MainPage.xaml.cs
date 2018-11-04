@@ -32,7 +32,7 @@ namespace AppVideojuegos
         {
             DataAccess.AddData(Input_Box.Text);
 
-            Output.ItemsSource = DataAccess.GetData();
+            Salida.ItemsSource = DataAccess.GetData();
         }
     }
 }

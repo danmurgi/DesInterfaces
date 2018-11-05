@@ -17,20 +17,21 @@
                      Width="400"
                      HorizontalAlignment="Left"/>
 
-        <!--<ComboBox Name="Input_Compania"
+        
+        <ComboBox x:Name="Input_Compania"
                     Header="Compañía"
-                    ItemsSource="{base:Compania}"
+                    ItemsSource="{x:Bind listaCompanias}"
                     Margin="24,24,0,0"
                     Width="400"
                     HorizontalAlignment="Left">
                     
             
-        </ComboBox>-->
-        <TextBox Name="Input_Compania"
+        </ComboBox>
+        <!--<TextBox Name="Input_Compania"
                     Header="Compañía"
                     Margin="24,24,0,0"
                     Width="400"
-                    HorizontalAlignment="Left"/>
+                    HorizontalAlignment="Left"/>-->
 
         <TextBox Name="Input_Genero"
                      Header="Género" 

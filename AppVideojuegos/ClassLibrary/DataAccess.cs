@@ -142,6 +142,33 @@ namespace ClassLibrary
             return listaCompanias;
         }
 
+        public static List<string> getNomCompanias()
+        {
+            //Creamos la lista
+            List<string> listaCompanias = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=DataBase.db"))
+            {
+                db.Open();
+
+                //Realizamos las consultas
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT nom_comp from companias", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                //Añadimos cada consulta a la lista
+                while (query.Read())
+                {
+                    listaCompanias.Add(query.GetString(0));
+                }
+
+                db.Close();
+
+            }
+            return listaCompanias;
+        }
+
         public static List<Videojuego> GetVideojuegos()
         {
             //Creamos la lista

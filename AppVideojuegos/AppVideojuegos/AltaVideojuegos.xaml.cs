@@ -23,15 +23,25 @@ namespace AppVideojuegos
     /// </summary>
     public sealed partial class AltaVideojuegos : Page
     {
+        private List<string> listaCompanias;
         public AltaVideojuegos()
         {
             this.InitializeComponent();
+            listaCompanias = DataAccess.getNomCompanias();
+            
+           
         }
 
+        public void GetNomCompanias() {
+            
+
+            //listaNomCompanias = DataAccess.getCompanias();
+
+        }
         private void AddData(object sender, RoutedEventArgs e)
         {
             var dateString = Input_FechaPubli.Date.ToString("dd/MM/yyyy");
-            DataAccess.InsertVideojuegos(Input_NomJuego.Text, Input_Compania.Text, Input_Genero.Text, Input_Plataforma.Text, dateString);
+            DataAccess.InsertVideojuegos(Input_NomJuego.Text, Input_Compania.ToString(), Input_Genero.Text, Input_Plataforma.Text, dateString);
         }
     }
 }

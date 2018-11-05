@@ -28,10 +28,13 @@ namespace AppVideojuegos
             this.InitializeComponent();
 
             //Inicializamos el frame del menu
-            MenuFrame.Navigate(typeof(AltaCompanias));
+            MenuFrame.Navigate(typeof(VerCompanias));
         }
 
         //Eventos del menu
+        private void Bt_Hamburguesa_Click(object sender, RoutedEventArgs e) {
+            menu.IsPaneOpen = !menu.IsPaneOpen;
+        }
         private void AltaComp_Click(object sender, RoutedEventArgs e) {
             MenuFrame.Navigate(typeof(AltaCompanias));
         }

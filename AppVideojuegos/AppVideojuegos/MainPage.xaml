@@ -12,7 +12,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <!--MENU DE LA APLICACION-->
         <SplitView x:Name="menu"
-                   Margin="20"
+                   Margin="0, 0, 20, 0"
                    DisplayMode="CompactOverlay">
             <SplitView.Pane>
                 <StackPanel>
@@ -30,8 +30,10 @@
                                 Click="VerComp_Click"
                                 Background="Transparent">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Home" Margin="0,0,10,0"/>
-                            <TextBlock Text="Ver Compañías" FontSize="18" VerticalAlignment="Center"/>
+                            <SymbolIcon Symbol="Home" Margin="-10,0,10,0"
+                                        Height="50" 
+                                        Width="50"/>
+                            <TextBlock Text="Ver Compañías" FontSize="20" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
 
@@ -40,8 +42,10 @@
                                 Click="AltaComp_Click"
                                 Background="Transparent">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Home" Margin="0,0,10,0"/>
-                            <TextBlock Text="Alta de Compañías" FontSize="18" VerticalAlignment="Center"/>
+                            <SymbolIcon Symbol="Home" Margin="-10,0,10,0" 
+                                        Height="50" 
+                                        Width="50"/>
+                            <TextBlock Text="Alta de Compañías" FontSize="20" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
 
@@ -50,8 +54,10 @@
                                 Click="VerVideojuegos_Click"
                                 Background="Transparent">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Home" Margin="0,0,10,0"/>
-                            <TextBlock Text="Ver Videojuegos" FontSize="18" VerticalAlignment="Center"/>
+                            <SymbolIcon Symbol="Home" Margin="-10,0,10,0"
+                                        Height="50" 
+                                        Width="50"/>
+                            <TextBlock Text="Ver Videojuegos" FontSize="20" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
 
@@ -60,8 +66,10 @@
                                 Click="AltaVideojuegos_Click"
                                 Background="Transparent">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Home" Margin="0,0,10,0"/>
-                            <TextBlock Text="Alta de Videojuegos" FontSize="18" VerticalAlignment="Center"/>
+                            <SymbolIcon Symbol="Home" Margin="-10,0,10,0"
+                                        Height="50" 
+                                        Width="50"/>
+                            <TextBlock Text="Alta de Videojuegos" FontSize="20" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
                 </StackPanel>

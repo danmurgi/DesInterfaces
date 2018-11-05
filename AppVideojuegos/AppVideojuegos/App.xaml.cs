@@ -34,7 +34,7 @@ namespace AppVideojuegos
             this.Suspending += OnSuspending;
 
             //Inicializamos la base de datos
-            //DataAccess.EliminarBase();
+            DataAccess.EliminarBase();
             DataAccess.InitializeDatabase();
         }
 

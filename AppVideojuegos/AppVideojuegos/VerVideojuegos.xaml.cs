@@ -27,6 +27,7 @@ namespace AppVideojuegos
         public VerVideojuegos()
         {
             this.InitializeComponent();
+            SalidaVideojuegos.ItemsSource = DataAccess.GetVideojuegos();
         }
     }
 }

@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
         <!--Mostramos los datos-->
-    <GridView Name="SalidaComp" ItemsSource="{Binding}">
+    <GridView x:Name="SalidaComp" ItemsSource="{Binding}">
         <GridView.ItemTemplate>
             <DataTemplate x:DataType="base:Compania">
                 <StackPanel>

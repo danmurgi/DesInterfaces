@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamarinDefinitivo"
+             xmlns:modelos="clr-namespace:XamarinDefinitivo.Modelos"
+             x:Class="XamarinDefinitivo.MainPage"
+                  MasterBehavior="Popover">
+
+    <MasterDetailPage.Resources>
+        <ResourceDictionary>
+            <modelos:MenuPrincipal x:Key="menuPrincipal"/>
+        </ResourceDictionary>
+    </MasterDetailPage.Resources>
+    
+    <MasterDetailPage.Master>
+        <ContentPage Title="Master">
+            <StackLayout>
+                <ListView ItemsSource="{Binding Items, Source={StaticResource menuPrincipal}}" ItemSelected="ListView_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="modelos:ItemMenu">
+                            <ViewCell>
+                                <StackLayout>
+                                    <Image Source="{Binding _icono}"/>
+                                    <Label Text="{Binding _titulo}"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>

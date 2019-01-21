@@ -10,8 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel>
-        <Button Click="Vieri">Vier</Button>
-        <GridView Name="SalidaVideojuegos" ItemsSource="{Binding}">
+        <GridView x:Name="SalidaVideojuegos" ItemsSource="{Binding}">
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="base:Videojuego">
                         <StackPanel>

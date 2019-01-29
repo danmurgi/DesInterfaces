@@ -1,0 +1,17 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GraficoSector">
+
+    <Style TargetType="local:Grafico" >
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="local:Grafico">
+                    <Grid>
+                        <Canvas x:Name="canvas"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

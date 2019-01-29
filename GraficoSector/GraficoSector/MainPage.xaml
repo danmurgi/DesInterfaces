@@ -9,6 +9,8 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <local:Grafico
+            Width="500"
+            Height="500"/>
     </Grid>
 </Page>

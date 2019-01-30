@@ -32,7 +32,7 @@ namespace GraficoSector
 
             if(paleta != null)
             {
-                trazar();
+                trazar(4);
                 //PintarGrafico();
 
             }

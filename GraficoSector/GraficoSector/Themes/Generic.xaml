@@ -1,14 +1,30 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:GraficoSector">
+    xmlns:local="using:GraficoSector"
+    xmlns:controls="using:Template10.Controls">
 
     <Style TargetType="local:Grafico" >
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:Grafico">
                     <Grid>
-                        <Canvas x:Name="canvas"/>
+                        <Grid.Resources>
+                            <Storyboard x:Name="sb">
+                                <DoubleAnimation From="359" To="0" Duration="0:0:3" 
+                             Storyboard.TargetName="mrpotato"
+                             EnableDependentAnimation="True"
+                             Storyboard.TargetProperty="EndAngle"/>
+                            </Storyboard>
+                        </Grid.Resources>
+                        <Canvas x:Name="canvas">
+                            <controls:RingSegment x:Name="mrpotato"
+                                StartAngle="0"
+                                EndAngle="359"
+                                Radius="150"
+                                Canvas.ZIndex="1"
+                                Fill="{StaticResource ApplicationPageBackgroundThemeBrush}"/>
+                        </Canvas>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

@@ -73,6 +73,8 @@ namespace GraficoSector
                     //Color
                     segmento.Fill = new SolidColorBrush(listaColores[posiColor]);
 
+
+                    segmento.Tapped += segmento_Tapped;
                    
                     //Añadimos el segmento al canvas
                     paleta.Children.Add(segmento);
@@ -88,6 +90,13 @@ namespace GraficoSector
                 storyboard.Begin();
             }
            
+        }
+
+        //Evento Tapped
+        private void segmento_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            RingSegment segmento = sender as RingSegment;
+            segmento.Fill = new SolidColorBrush(Colors.Magenta);
         }
 
         public int contarVentas()

@@ -47,12 +47,12 @@ namespace GraficoSector
                 int anguloInicio = 0;
                 int anguloFin = 0;
 
-                int totalVentas = contarVentas();
+                int totalVentas = contarVentas(); 
 
-                int posiColor = 0;
+                int posiColor = 0; //Contador que indicara la posicion de la lista de colores
 
+                //Objeto que almacena la animacion
                 Storyboard storyboard = (Storyboard)GetTemplateChild("sb");
-                //storyboard.RepeatBehavior = RepeatBehavior.Forever;
 
                 //Recorremos la lista para dibujar cada segmento 
                 foreach (Videojuego juego in ItemSource)
@@ -68,13 +68,13 @@ namespace GraficoSector
                     segmento.EndAngle = anguloFin;
 
                     //Radio
-                    segmento.Radius = 150;
+                    segmento.Radius = radio;
 
                     //Color
                     segmento.Fill = new SolidColorBrush(listaColores[posiColor]);
 
 
-                    segmento.Tapped += segmento_Tapped;
+                    segmento.Tapped += segmento_Tapped; //Evento del segmento
                    
                     //Añadimos el segmento al canvas
                     paleta.Children.Add(segmento);
@@ -87,6 +87,8 @@ namespace GraficoSector
                     Canvas.SetTop(segmento, 0);
                     posiColor++;
                 }
+
+                //Comenzamos la animacion
                 storyboard.Begin();
             }
            
@@ -121,16 +123,21 @@ namespace GraficoSector
             listaColores.Add(Colors.Khaki);
 
         }
-        //Propiedad que define el alto y ancho del grafico
-        public int tamano
+        //Propiedad que define el radio
+
+
+        public int radio
         {
-            get { return (int)GetValue(tamanoProperty); }
-            set { SetValue(tamanoProperty, value); }
+            get { return (int)GetValue(radioProperty); }
+            set { SetValue(radioProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for tamano.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty tamanoProperty =
-            DependencyProperty.Register("tamano", typeof(int), typeof(Grafico), new PropertyMetadata(null));
+        // Using a DependencyProperty as the backing store for radio.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty radioProperty =
+            DependencyProperty.Register("radio", typeof(int), typeof(Grafico), new PropertyMetadata(null));
+
+
+
 
 
 

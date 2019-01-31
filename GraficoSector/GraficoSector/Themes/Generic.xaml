@@ -10,18 +10,21 @@
                 <ControlTemplate TargetType="local:Grafico">
                     <Grid>
                         <Grid.Resources>
+                            <!--Animacion del segundo anillo-->
                             <Storyboard x:Name="sb">
                                 <DoubleAnimation From="359" To="0" Duration="0:0:3" 
-                             Storyboard.TargetName="mrpotato"
+                             Storyboard.TargetName="graficoAnimacion"
                              EnableDependentAnimation="True"
                              Storyboard.TargetProperty="EndAngle"/>
                             </Storyboard>
                         </Grid.Resources>
+                        
+                        <!--Segundo anillo que tendra animacion-->
                         <Canvas x:Name="canvas">
-                            <controls:RingSegment x:Name="mrpotato"
+                            <controls:RingSegment x:Name="graficoAnimacion"
                                 StartAngle="0"
                                 EndAngle="359"
-                                Radius="150"
+                                Radius="300"
                                 Canvas.ZIndex="1"
                                 Fill="{StaticResource ApplicationPageBackgroundThemeBrush}"/>
                         </Canvas>

@@ -9,36 +9,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Page.Resources>
-        <Storyboard x:Name="sb">
-            <DoubleAnimation From="0" To="200" Duration="0:0:2" 
-                             Storyboard.TargetName="anillo"
-                             EnableDependentAnimation="True"
-                             Storyboard.TargetProperty="EndAngle"/>
-        </Storyboard>
-    </Page.Resources>
-    
     <Grid>
-
-
         <local:Grafico 
             x:Name="graficoPizza"
-            Width="500"
-            Height="500"/>
-
-        <!--<controls:RingSegment x:Name="anillo" 
-                              Radius="200" 
-                              StartAngle="0" 
-                             
-                              Fill="Red">
-        
-
-        </controls:RingSegment>-->
-
-
-
-
-
+            radio="300"/>
 
     </Grid>
 </Page>

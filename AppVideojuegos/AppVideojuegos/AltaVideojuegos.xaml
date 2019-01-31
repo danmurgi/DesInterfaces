@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel>
+    <StackPanel x:Name="FormAltaVideojuegos">
         <TextBox Name="Input_NomJuego" 
                      Header="Título" 
                      Margin="24, 24, 0, 0"
@@ -17,32 +17,39 @@
                      Width="400"
                      HorizontalAlignment="Left"/>
 
-
         <ComboBox x:Name="Input_Compania"
                     Header="Compañía"
                     ItemsSource="{x:Bind listaCompanias}"
                     Margin="24,24,0,0"
                     Width="400"
                     HorizontalAlignment="Left"/>
-        <!--<TextBox Name="Input_Compania"
-                    Header="Compañía"
-                    Margin="24,24,0,0"
-                    Width="400"
-                    HorizontalAlignment="Left"/>-->
-
+        
         <TextBox Name="Input_Genero"
                      Header="Género" 
                      Margin="24, 24, 0, 0"
                      MaxLength="30"
                      Width="400"
                      HorizontalAlignment="Left"/>
-
-        <TextBox Name="Input_Plataforma"
-                     Header="Plataforma" 
+        
+        <TextBlock Text="Plataformas" 
                      Margin="24, 24, 0, 0"
-                     MaxLength="30"
                      Width="400"
                      HorizontalAlignment="Left"/>
+
+        <StackPanel Margin="24,24,0,0">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox x:Name="Input_PSX" Content="PSX"/>
+                <CheckBox x:Name="Input_PS2" Content="PS2"/>
+                <CheckBox x:Name="Input_PC" Content="PC"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <CheckBox x:Name="Input_PS4" Content="PS4"/>
+                <CheckBox x:Name="Input_XBox" Content="XBox One"/>
+                <CheckBox x:Name="Input_Switch" Content="Nintendo Switch"/>
+            </StackPanel>
+            
+        </StackPanel>
+
 
         <DatePicker Name="Input_FechaPubli" Header="Fecha de publicación"
             Margin="24, 24, 0, 0"

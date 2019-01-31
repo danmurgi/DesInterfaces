@@ -9,19 +9,24 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel>
-        <GridView x:Name="SalidaVideojuegos" ItemsSource="{Binding}">
-                <GridView.ItemTemplate>
-                    <DataTemplate x:DataType="base:Videojuego">
-                        <StackPanel>
-                            <TextBlock Text="{x:Bind nombre}" Width="300"/>
-                            <TextBlock Text="{x:Bind compania}" Width="300"/>
-                            <TextBlock Text="{x:Bind genero}" Width="300"/>
-                            <TextBlock Text="{x:Bind plataforma}" Width="300"/>
-                            <TextBlock Text="{x:Bind fechaPubli}" Width="300"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
-    </StackPanel>
+    <ScrollViewer>
+        <GridView x:Name="SalidaVideojuegos" ItemsSource="{Binding}"
+              ScrollViewer.VerticalScrollBarVisibility="Visible">
+
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="base:Videojuego">
+                    <StackPanel>
+                        <Image Width="150" Source="Assets/ff7.png"/>
+                        <TextBlock Text="{x:Bind nombre}" Width="150"/>
+                        <TextBlock Text="{x:Bind compania}" Width="150"/>
+                        <TextBlock Text="{x:Bind genero}" Width="150"/>
+                        <TextBlock Text="{x:Bind plataforma}" Width="150"/>
+                        <TextBlock Text="{x:Bind fechaPubli}" Width="150"/>
+                        
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </ScrollViewer>
+    
 </Page>

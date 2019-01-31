@@ -9,16 +9,19 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="0,0,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
-        <!--Mostramos los datos-->
-    <GridView x:Name="SalidaComp" ItemsSource="{Binding}">
-        <GridView.ItemTemplate>
-            <DataTemplate x:DataType="base:Compania">
-                <StackPanel>
-                    <TextBlock Text="{x:Bind nombreComp}" Width="300"/>
-                    <TextBlock Text="{x:Bind fechaIni}" Width="300"/>
-                    <TextBlock Text="{x:Bind numTrab}" Width="300"/>
-                </StackPanel>
-            </DataTemplate>
-        </GridView.ItemTemplate>
-    </GridView>
+    <ScrollViewer>
+        <GridView x:Name="SalidaComp" ItemsSource="{Binding}" HorizontalContentAlignment="Stretch">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="base:Compania">
+                    <StackPanel>
+                        <Image Width="150" Source="Assets/konami.png"/>
+                        <TextBlock Text="{x:Bind nombreComp}" Width="150"/>
+                        <TextBlock Text="{x:Bind fechaIni}" Width="150"/>
+                        <TextBlock Text="{x:Bind numTrab}" Width="150"/>
+                    </StackPanel>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+    </ScrollViewer>
+   
 </Page>

@@ -65,7 +65,12 @@ namespace GraficoSector
         //De momento se le pasa un numero de productos, mas tarde se le pasara una lista de objetos
         private void trazar(int numProductos)
         {
-            //int x
+            int tamanoTotal = 300;
+            int cantidadMax = 2000;
+            int auxEje = 0;
+            int yPunto2 = tamanoTotal/2;
+            int yPunto3 = 100;
+
             for (int i = 0; i < numProductos; i++)
             {
                 //Instanciamos el poligono
@@ -82,9 +87,13 @@ namespace GraficoSector
                 //poligono.StrokeThickness = 2;
 
                 //Creamos los puntos
+                //if ()
+                //{
+
+                //}
                 Point punto1 = new Point(0, 0);
-                Point punto2 = new Point(0, 100);
-                Point punto3 = new Point(100, 100);
+                Point punto2 = new Point(0, yPunto2);
+                Point punto3 = new Point(tamanoTotal/2, yPunto3);
 
                 //Creamos una lista de puntos
                 PointCollection listaPuntos = new PointCollection();
@@ -99,6 +108,9 @@ namespace GraficoSector
 
                 //Añadimos el poligono al canvas
                 paleta.Children.Add(poligono);
+
+                yPunto2+=
+                yPunto3 += 100;
             }
         }
 

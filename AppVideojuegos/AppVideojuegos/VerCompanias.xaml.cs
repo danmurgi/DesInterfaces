@@ -28,8 +28,6 @@ namespace AppVideojuegos
         {
             this.InitializeComponent();
             SalidaComp.ItemsSource = DataAccess.getCompanias();
-
-            //SalidaComp.ItemsSource = DataAccess.getCompanias();//listaCompanias = DataAccess.getCompanias();
         }
 
 

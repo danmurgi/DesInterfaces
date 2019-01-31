@@ -9,13 +9,35 @@
     xmlns:base="using:ClassLibrary"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" MinHeight="500">
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <CommandBar Grid.Row="0">
+            <AppBarButton Icon="Home" Click="Inicio_Click"/>    
+            <CommandBar.Content>
+                <StackPanel Orientation="Horizontal">
+                    <AppBarButton Height="44" Icon="Back" Click="Atras_Click"/>
+                    <AppBarButton Height="44" Icon="Forward" Click="Adelante_Click"/>
+                </StackPanel>
+            </CommandBar.Content>
+            
+        </CommandBar>
+        
+
         <!--MENU DE LA APLICACION-->
-        <SplitView x:Name="menu"
+        <SplitView x:Name="SplitMenu"
                    Margin="0, 0, 20, 0"
-                   DisplayMode="CompactOverlay">
+                   IsPaneOpen="False"
+                   Grid.Row="1"
+                   >
             <SplitView.Pane>
-                <StackPanel>
+
+                <StackPanel Orientation="Vertical"
+                            Background="{ThemeResource SystemControlBackgroundAccentBrush}">
                     <!--Boton Desplegable hamburguesa-->
                     <Button x:Name="Bt_Hamburguesa"
                             FontFamily="Segoe MDL2 Assets" 
@@ -30,7 +52,7 @@
                                 Click="VerComp_Click"
                                 Background="Transparent">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Home" Margin="-10,0,10,0"
+                            <SymbolIcon Symbol="World" Margin="-10,0,10,0"
                                         Height="50" 
                                         Width="50"/>
                             <TextBlock Text="Ver Compañías" FontSize="20" VerticalAlignment="Center"/>
@@ -42,7 +64,7 @@
                                 Click="AltaComp_Click"
                                 Background="Transparent">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Home" Margin="-10,0,10,0" 
+                            <SymbolIcon Symbol="Globe" Margin="-10,0,10,0" 
                                         Height="50" 
                                         Width="50"/>
                             <TextBlock Text="Alta de Compañías" FontSize="20" VerticalAlignment="Center"/>
@@ -54,7 +76,7 @@
                                 Click="VerVideojuegos_Click"
                                 Background="Transparent">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Home" Margin="-10,0,10,0"
+                            <SymbolIcon Symbol="Pictures" Margin="-10,0,10,0"
                                         Height="50" 
                                         Width="50"/>
                             <TextBlock Text="Ver Videojuegos" FontSize="20" VerticalAlignment="Center"/>
@@ -66,7 +88,7 @@
                                 Click="AltaVideojuegos_Click"
                                 Background="Transparent">
                         <StackPanel Orientation="Horizontal">
-                            <SymbolIcon Symbol="Home" Margin="-10,0,10,0"
+                            <SymbolIcon Symbol="PhoneBook" Margin="-10,0,10,0"
                                         Height="50" 
                                         Width="50"/>
                             <TextBlock Text="Alta de Videojuegos" FontSize="20" VerticalAlignment="Center"/>
@@ -74,37 +96,54 @@
                     </Button>
                 </StackPanel>
             </SplitView.Pane>
+
             <SplitView.Content>
-                <Frame Name="MenuFrame"/>
+                <Frame x:Name="MenuFrame">
+                    
+                </Frame>
             </SplitView.Content>
         </SplitView>
 
-        <!--<NavigationViewItem Content="Ver Compañías" Tag="Bt_VerCompanias"/>
-                    <NavigationViewItem Content="Alta de Compañías" Tag="Bt_AltaCompanias"/>
-                    <NavigationViewItem Content="Ver Videojuegos" Tag="Bt_VerVideojuegos"/>
-                    <NavigationViewItem Content="Alta de Videojuegos" Tag="Bt_AltaVideojuegos"/>-->
+        
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <!--Movil-->
+                <VisualState x:Name="VisualStateMovil">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SplitMenu.DisplayMode" Value="CompactOverlay"/>
+                        
+                    </VisualState.Setters>
+                </VisualState>
+                <!--Tablet-->
+                <VisualState x:Name="VisualStatetablet">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SplitMenu.DisplayMode" Value="CompactOverlay"/>
+                        <Setter Target="SplitMenu.IsPaneOpen" Value="True" />
+                        
+                    </VisualState.Setters>
+                </VisualState>
+                <!--PC-->
+
+                <VisualState x:Name="VisualStatePC">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="800"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="SplitMenu.DisplayMode" Value="CompactInline"/>
+                        <Setter Target="SplitMenu.IsPaneOpen" Value="True" />
+                        
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
 
 
-
-
-
-        <!--
-        <Button Name="Bt_VerCompanias"
-                        Content="Ver Compañías"
-                        Margin="0, 0, 20, 0"
-                        Click="VerComp_Click"/>
-                <Button Name="Bt_AltaCompanias"
-                        Content="Alta de Compañías"
-                        Margin="0, 0, 20, 0"
-                        Click="AltaComp_Click"/>
-                <Button Name="Bt_VerVideojuegos"
-                        Content="Ver Videojuegos"
-                        Margin="0, 0, 20, 0"
-                        Click="VerVideojuegos_Click"/>
-                <Button Name="Bt_AltaVideojuegos"
-                        Content="Alta de Videojuegos"
-                        Margin="0, 0, 20, 0"
-                        Click="AltaVideojuegos_Click"/>
-        -->
     </Grid>
 </Page>

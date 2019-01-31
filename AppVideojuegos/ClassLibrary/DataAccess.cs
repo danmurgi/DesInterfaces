@@ -33,14 +33,6 @@ namespace ClassLibrary
                     "fecha_publi TEXT," +
                     "FOREIGN KEY(compania) REFERENCES compania(nom_comp)" +
                     ")";
-
-                //Instanciamos los comandos
-                SqliteCommand createCompanias = new SqliteCommand(cadCompanias, db);
-                SqliteCommand createVideojuegos = new SqliteCommand(cadVideojuegos, db);
-
-                //Ejecutamos los comandos
-                createCompanias.ExecuteReader();
-                createVideojuegos.ExecuteReader();
             }
         }
 

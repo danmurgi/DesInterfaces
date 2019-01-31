@@ -29,11 +29,30 @@ namespace AppVideojuegos
 
             //Inicializamos el frame del menu
             MenuFrame.Navigate(typeof(VerCompanias));
+           
         }
 
+        private void Atras_Click(object sender, RoutedEventArgs e) {
+            try
+            {
+                this.MenuFrame.GoBack();
+            }
+            catch (Exception) { }
+        }
+        private void Adelante_Click(object sender, RoutedEventArgs e) {
+            try
+            {
+                this.MenuFrame.GoForward();
+            }
+            catch (Exception) { }
+        }
+        private void Inicio_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFrame.Navigate(typeof(VerCompanias));
+        }
         //Eventos del menu
         private void Bt_Hamburguesa_Click(object sender, RoutedEventArgs e) {
-            menu.IsPaneOpen = !menu.IsPaneOpen;
+            SplitMenu.IsPaneOpen = !SplitMenu.IsPaneOpen;
         }
         private void AltaComp_Click(object sender, RoutedEventArgs e) {
             MenuFrame.Navigate(typeof(AltaCompanias));

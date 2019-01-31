@@ -5,12 +5,21 @@
     xmlns:local="using:GraficoSector"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Template10.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <local:Grafico
+        <!--<local:Grafico
             Width="500"
             Height="500"/>
+        -->
+        <controls:RingSegment x:Name="Grafico" Radius="150" StartAngle="-180" EndAngle="179" Fill="Red"/>
+        
+
+
+
+
+
     </Grid>
 </Page>

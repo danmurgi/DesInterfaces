@@ -39,10 +39,10 @@ namespace GraficoSector
         {
             listaJuegos.Add(new Videojuego {nombre="Final Fantasy VIII", ventas=7000});
             listaJuegos.Add(new Videojuego {nombre = "Resident Evil 3", ventas = 3000});
-            listaJuegos.Add(new Videojuego { nombre = "Final Fantasy VIII", ventas = 4000 });
-            listaJuegos.Add(new Videojuego { nombre = "Resident Evil 3", ventas = 10000 });
-            listaJuegos.Add(new Videojuego { nombre = "Final Fantasy VIII", ventas = 1000 });
-            listaJuegos.Add(new Videojuego { nombre = "Resident Evil 3", ventas =2000 });
+            //listaJuegos.Add(new Videojuego { nombre = "Final Fantasy VIII", ventas = 4000 });
+            //listaJuegos.Add(new Videojuego { nombre = "Resident Evil 3", ventas = 10000 });
+            //listaJuegos.Add(new Videojuego { nombre = "Final Fantasy VIII", ventas = 1000 });
+            //listaJuegos.Add(new Videojuego { nombre = "Resident Evil 3", ventas =2000 });
         }
     }
 }

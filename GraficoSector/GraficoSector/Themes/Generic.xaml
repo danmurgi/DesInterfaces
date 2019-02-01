@@ -12,7 +12,7 @@
                         <Grid.Resources>
                             <!--Animacion del segundo anillo-->
                             <Storyboard x:Name="sb">
-                                <DoubleAnimation From="359" To="0" Duration="0:0:3" 
+                                <DoubleAnimation From="359" To="0" Duration="0:0:2" 
                              Storyboard.TargetName="graficoAnimacion"
                              EnableDependentAnimation="True"
                              Storyboard.TargetProperty="EndAngle"/>

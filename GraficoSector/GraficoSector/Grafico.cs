@@ -31,6 +31,11 @@ namespace GraficoSector
             base.OnApplyTemplate();
 
             paleta = (Canvas)GetTemplateChild("canvas");
+
+            //Enlazamos el radio de los dos graficos
+            RingSegment rs = (RingSegment)GetTemplateChild("graficoAnimacion");
+            rs.Radius = this.radio;
+
             llenarListaColores();
             if (paleta != null)
             {
@@ -55,13 +60,26 @@ namespace GraficoSector
                 Storyboard storyboard = (Storyboard)GetTemplateChild("sb");
 
                 //Recorremos la lista para dibujar cada segmento 
-                foreach (Videojuego juego in ItemSource)
+                for (int i=0; i<ItemSource.Count;  i++ )
                 {
+                    //Obtenemos el juego actual
+                    Videojuego juego = ItemSource[i];
+
                     //Creamos el segmento grafico del elemento
                     RingSegment segmento = new RingSegment();
 
                     //Obtenemos el angulo donde acaba
-                    anguloFin = anguloInicio + ((juego.ventas * 360) / totalVentas);
+
+
+                    //Si se va a pintar el ultimo item el angulo de fin era 360
+                    if (i == ItemSource.Count - 1)
+                    {
+                        anguloFin = 360;
+                    }
+                    else
+                    {
+                        anguloFin = anguloInicio + ((juego.ventas * 360) / totalVentas);
+                    }
 
                     //Definimos el inicio y fin del segmento
                     segmento.StartAngle = anguloInicio;
@@ -81,10 +99,10 @@ namespace GraficoSector
 
                     //El angulo de inicio comenzara por el que ha terminado
                     anguloInicio = anguloFin;
-
                     
                     Canvas.SetLeft(segmento, 0);
                     Canvas.SetTop(segmento, 0);
+
                     posiColor++;
                 }
 

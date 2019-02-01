@@ -12,7 +12,7 @@
     <Grid>
         <local:Grafico 
             x:Name="graficoPizza"
-            radio="300"/>
+            radio="250"/>
 
     </Grid>
 </Page>

@@ -19,8 +19,11 @@ namespace GraficoSector
 {
     public sealed class Grafico : Control
     {
+        //Atributos
         Canvas paleta;
         List<Color> listaColores = new List<Color>();
+
+        //Constructor
         public Grafico()
         {
             this.DefaultStyleKey = typeof(Grafico);
@@ -52,9 +55,7 @@ namespace GraficoSector
                 int anguloInicio = 0;
                 int anguloFin = 0;
 
-                int totalVentas = contarVentas(); 
-
-                int posiColor = 0; //Contador que indicara la posicion de la lista de colores
+                int totalVentas = contarVentas();
 
                 //Objeto que almacena la animacion
                 Storyboard storyboard = (Storyboard)GetTemplateChild("sb");
@@ -69,19 +70,18 @@ namespace GraficoSector
                     RingSegment segmento = new RingSegment();
 
                     //Obtenemos el angulo donde acaba
-
-
-                    //Si se va a pintar el ultimo item el angulo de fin era 360
+                    //Si se va a pintar el ultimo item el angulo de fin sera 360
                     if (i == ItemSource.Count - 1)
                     {
                         anguloFin = 360;
                     }
+                    //Si no calculamos el angulo con la proporcion
                     else
                     {
                         anguloFin = anguloInicio + ((juego.ventas * 360) / totalVentas);
                     }
 
-                    //Definimos el inicio y fin del segmento
+                    //Redefinimos el inicio y fin del segmento
                     segmento.StartAngle = anguloInicio;
                     segmento.EndAngle = anguloFin;
 
@@ -89,9 +89,9 @@ namespace GraficoSector
                     segmento.Radius = radio;
 
                     //Color
-                    segmento.Fill = new SolidColorBrush(listaColores[posiColor]);
-
-
+                    segmento.Fill = new SolidColorBrush(listaColores[i]);
+                    
+                    //Evento del segmento
                     segmento.Tapped += segmento_Tapped; //Evento del segmento
                    
                     //Añadimos el segmento al canvas
@@ -102,8 +102,6 @@ namespace GraficoSector
                     
                     Canvas.SetLeft(segmento, 0);
                     Canvas.SetTop(segmento, 0);
-
-                    posiColor++;
                 }
 
                 //Comenzamos la animacion
@@ -116,7 +114,8 @@ namespace GraficoSector
         private void segmento_Tapped(object sender, TappedRoutedEventArgs e)
         {
             RingSegment segmento = sender as RingSegment;
-            segmento.Fill = new SolidColorBrush(Colors.Magenta);
+
+            //segmento.Fill = new SolidColorBrush(Colors.Magenta);
         }
 
         public int contarVentas()
@@ -142,8 +141,6 @@ namespace GraficoSector
 
         }
         //Propiedad que define el radio
-
-
         public int radio
         {
             get { return (int)GetValue(radioProperty); }
@@ -153,10 +150,6 @@ namespace GraficoSector
         // Using a DependencyProperty as the backing store for radio.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty radioProperty =
             DependencyProperty.Register("radio", typeof(int), typeof(Grafico), new PropertyMetadata(null));
-
-
-
-
 
 
         public ObservableCollection<Videojuego> ItemSource
@@ -174,24 +167,3 @@ namespace GraficoSector
     }
 }
 
-
-//Creamos la animacion
-/*
-DoubleAnimation animacion = new DoubleAnimation()
-{
-    From = anguloInicio,
-    To = anguloFin,
-    Duration = new Duration(TimeSpan.FromSeconds(2)),
-    EnableDependentAnimation = false
-};
-
-//var prop = RingSegment.EndAngleProperty;
-
-//RotateTransform rotar = new RotateTransform();
-//segmento.RenderTransform = rotar;
-
-Storyboard.SetTarget(animacion, segmento);
-Storyboard.SetTargetProperty(animacion, "EndAngle");
-storyboard.Children.Add(animacion);
-
-*/

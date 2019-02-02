@@ -49,16 +49,15 @@ namespace GraficoSector
 
             //Definimos el panel de informacion
             stackInfo.Orientation = Orientation.Vertical;
-            stackInfo.BorderThickness = new Thickness(5);
-            stackInfo.BorderBrush = new SolidColorBrush(Colors.Black);
+            
 
             stackInfo.Children.Add(infoNombre);
             stackInfo.Children.Add(infoVentas);
             paleta.Children.Add(stackInfo);
 
             //Posicionamos el panel de info
-            Canvas.SetTop(stackInfo, 0);
-            Canvas.SetLeft(stackInfo, 0);
+            Canvas.SetTop(stackInfo, radio*2+20);
+            Canvas.SetLeft(stackInfo, radio/2);
 
             //Segundo anillo que hara la animacion
             RingSegment rs = (RingSegment)GetTemplateChild("graficoAnimacion");
@@ -93,84 +92,82 @@ namespace GraficoSector
 
                 Canvas.SetLeft(stackLeyenda, this.Width-50);
 
-                
-
                 //Establecemos el angulo de inicio y fin para posicionar mas tarde cada segmento del grafico
                 int anguloInicio = 0;
                 int anguloFin = 0;
 
                 int totalVentas = contarVentas();
 
-                //Recorremos la lista para dibujar cada segmento 
-                for (int i = 0; i < ItemSource.Count && i < listaColores.Count; i++)
+                if(ItemSource.Count <= listaColores.Count)
                 {
-                    //Obtenemos el juego actual
-                    Videojuego juego = ItemSource[i];
-
-                    //Creamos el segmento grafico del elemento
-                    RingSegment segmento = new RingSegment();
-
-                    //Obtenemos el angulo donde acaba
-                    //Si se va a pintar el ultimo item el angulo de fin sera 360
-                    if (i == ItemSource.Count - 1)
+                    //Recorremos la lista para dibujar cada segmento 
+                    for (int i = 0; i < ItemSource.Count && i < listaColores.Count; i++)
                     {
-                        anguloFin = 360;
+                        //Obtenemos el juego actual
+                        Videojuego juego = ItemSource[i];
+
+                        //Creamos el segmento grafico del elemento
+                        RingSegment segmento = new RingSegment();
+
+                        //Obtenemos el angulo donde acaba
+                        //Si se va a pintar el ultimo item el angulo de fin sera 360
+                        if (i == ItemSource.Count - 1)
+                        {
+                            anguloFin = 360;
+                        }
+                        //Si no calculamos el angulo con la proporcion
+                        else
+                        {
+                            anguloFin = anguloInicio + ((juego.ventas * 360) / totalVentas);
+                        }
+
+                        //Redefinimos el inicio y fin del segmento
+                        segmento.StartAngle = anguloInicio;
+                        segmento.EndAngle = anguloFin;
+
+                        //Radio
+                        segmento.Radius = radio;
+
+                        //Asignamos el mismo color de la lista al segmento y al objeto
+                        segmento.Fill = new SolidColorBrush(listaColores[i]);
+                        juego.colorJuego = new SolidColorBrush(listaColores[i]);
+
+                        //Etiqueta con el nombre del juego
+                        TextBlock etiquetaJuego = new TextBlock();
+                        etiquetaJuego.Text = juego.nombre;
+
+                        //Rectangulo del mismo color que el segmento
+                        Rectangle cuadroColor = new Rectangle();
+                        cuadroColor.Width = 25;
+                        cuadroColor.Height = 25;
+                        cuadroColor.Margin = new Thickness(0, 0, 6, 0);
+                        cuadroColor.Fill = juego.colorJuego;
+
+                        //StackPanel horizontal que tendra el cuadro de color y el nombre del videojuego
+                        stackJuego = new StackPanel();
+                        stackJuego.Orientation = Orientation.Horizontal;
+                        stackJuego.Margin = new Thickness(0, 0, 0, 6);
+
+                        //Añadimos los componentes a los stackpanel
+                        stackJuego.Children.Add(cuadroColor);
+                        stackJuego.Children.Add(etiquetaJuego);
+                        stackLeyenda.Children.Add(stackJuego);
+
+                        //Evento del segmento
+                        segmento.Tapped += segmento_Tapped; //Evento del segmento
+
+                        //Añadimos el segmento al canvas
+                        paleta.Children.Add(segmento);
+
+                        //El angulo de inicio comenzara por el que ha terminado
+                        anguloInicio = anguloFin;
+
+                        Canvas.SetLeft(segmento, 0);
+                        Canvas.SetTop(segmento, 0);
+
                     }
-                    //Si no calculamos el angulo con la proporcion
-                    else
-                    {
-                        anguloFin = anguloInicio + ((juego.ventas * 360) / totalVentas);
-                    }
-
-                    //Redefinimos el inicio y fin del segmento
-                    segmento.StartAngle = anguloInicio;
-                    segmento.EndAngle = anguloFin;
-
-                    //Radio
-                    segmento.Radius = radio;
-
-                    //Asignamos el mismo color de la lista al segmento y al objeto
-                    segmento.Fill = new SolidColorBrush(listaColores[i]);
-                    juego.colorJuego = new SolidColorBrush(listaColores[i]);
-
-                    //Etiqueta con el nombre del juego
-                    TextBlock etiquetaJuego = new TextBlock();
-                    etiquetaJuego.Text = juego.nombre;
-
-                    //Rectangulo del mismo color que el segmento
-                    Rectangle cuadroColor = new Rectangle();
-                    cuadroColor.Width = 25;
-                    cuadroColor.Height = 25;
-                    cuadroColor.Margin = new Thickness(0, 0, 6, 0);
-                    cuadroColor.Fill = juego.colorJuego;
-
-                    //StackPanel horizontal que tendra el cuadro de color y el nombre del videojuego
-                    stackJuego = new StackPanel();
-                    stackJuego.Orientation = Orientation.Horizontal;
-                    stackJuego.Margin = new Thickness(0, 0, 0, 6);
-
-                    //Añadimos los componentes a los stackpanel
-                    stackJuego.Children.Add(cuadroColor);
-                    stackJuego.Children.Add(etiquetaJuego);
-                    stackLeyenda.Children.Add(stackJuego);
-
-                    //Evento del segmento
-                    segmento.Tapped += segmento_Tapped; //Evento del segmento
-
-                    //Añadimos el segmento al canvas
-                    paleta.Children.Add(segmento);
-
-                    //El angulo de inicio comenzara por el que ha terminado
-                    anguloInicio = anguloFin;
-
-                    Canvas.SetLeft(segmento, 0);
-                    Canvas.SetTop(segmento, 0);
-
                 }
-
-
             }
-
         }
 
         //Evento Tapped
@@ -184,21 +181,30 @@ namespace GraficoSector
 
             for (int i = 0; i < ItemSource.Count; i++)
             {
-                Videojuego juego = ItemSource[i];
-
-                //Obtenemos el color solido del del juego y 
-                SolidColorBrush colorJuego = (SolidColorBrush)juego.colorJuego;
-
-                //Comprobamos si el color del segmento es el mismo que el del objeto Videojuego
-                if (colorSegmento.Color == colorJuego.Color)
+                try
                 {
-                    Debug.WriteLine("Juego pulsado: " + juego.nombre);
-                    infoNombre.Text = "Videojuego: " + juego.nombre;
-                    infoVentas.Text = "Ventas: " + juego.ventas;
-                    
+                    Videojuego juego = ItemSource[i];
+
+                    //Obtenemos el color solido del del juego y 
+                    SolidColorBrush colorJuego = (SolidColorBrush)juego.colorJuego;
+
+                    //Comprobamos si el color del segmento es el mismo que el del objeto Videojuego
+                    if (colorSegmento.Color == colorJuego.Color)
+                    {
+                        //Definimos el borde del panel
+                        stackInfo.BorderThickness = new Thickness(5);
+                        stackInfo.BorderBrush = new SolidColorBrush(Colors.Black);
+
+                        //Modificamos los bloques de texto
+                        infoNombre.Text = "Videojuego: " + juego.nombre;
+                        infoVentas.Text = "Ventas: " + juego.ventas;
+                    }
+                }
+                catch(Exception)
+                {
 
                 }
-
+                
             }
         }
 
@@ -206,6 +212,7 @@ namespace GraficoSector
         {
             TrazarGrafico();
         }
+
         public int contarVentas()
         {
             int total = 0;
@@ -227,6 +234,13 @@ namespace GraficoSector
             listaColores.Add(Colors.Blue);
             listaColores.Add(Colors.SeaGreen);
             listaColores.Add(Colors.Green);
+            listaColores.Add(Colors.MediumPurple);
+            listaColores.Add(Colors.DarkSlateBlue);
+            listaColores.Add(Colors.Khaki);
+            listaColores.Add(Colors.DarkKhaki);
+            listaColores.Add(Colors.Gray);
+
+
 
         }
         //Propiedad que define el radio

@@ -10,12 +10,51 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <SplitView x:Name="SplitMenu"
+                   Margin="0, 0, 20, 0"
+                   IsPaneOpen="True"
+                   DisplayMode="Inline">
+            <SplitView.Pane>
+
+                <StackPanel Orientation="Vertical"
+                            Background="{ThemeResource SystemControlBackgroundAccentBrush}">
+                    <!--Boton Desplegable hamburguesa-->
+                    <Button x:Name="Bt_Hamburguesa"
+                            FontFamily="Segoe MDL2 Assets" 
+                            Content="&#xE700;"
+                            Margin="0, 20, 0, 0"
+                            Width="50"
+                            Height="50"
+                            Click="Bt_Hamburguesa_Click"/>
+
+                    <Button x:Name="btnGrafico"
+                                Height="50"
+                            Content="Ver Gráfico"
+                                Click="btnGrafico_Click"
+                                Background="Transparent"/>
+
+                    <Button Name="btnFormulario"
+                                Height="50"
+                                Click="btnFormulario_Click"
+                                Background="Transparent"/>
+
+
+                </StackPanel>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <Frame x:Name="MenuFrame">
+
+                </Frame>
+            </SplitView.Content>
+        </SplitView>
+        
         <local:Grafico 
             x:Name="graficoPizza"
             radio="200"
             Width="500"
             Height="500"/>
-        
+
         <Button x:Name="btnInsertar" Content="Insertar Videojuego" Click="btnInsertar_Click" VerticalAlignment="Top"/>
 
     </Grid>

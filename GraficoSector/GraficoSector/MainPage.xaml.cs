@@ -28,6 +28,7 @@ namespace GraficoSector
         public MainPage()
         {
             this.InitializeComponent();
+            MenuFrame.Navigate(typeof(VerGrafico));
             LlenarLista();
 
             //Le damos la fuente de objetos al componente
@@ -48,6 +49,21 @@ namespace GraficoSector
         private void btnInsertar_Click(object sender, RoutedEventArgs e)
         {
             listaJuegos.Add(new Videojuego { nombre="prueba", ventas=250000});
+        }
+
+        private void btnGrafico_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFrame.Navigate(typeof(VerGrafico));
+        }
+
+        private void btnFormulario_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFrame.Navigate(typeof(Formulario));
+        }
+
+        private void Bt_Hamburguesa_Click(object sender, RoutedEventArgs e)
+        {
+            SplitMenu.IsPaneOpen = !SplitMenu.IsPaneOpen;
         }
     }
 }

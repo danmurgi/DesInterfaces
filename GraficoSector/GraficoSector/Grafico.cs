@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 using Template10.Controls;
 using Windows.UI.Xaml.Media.Animation;
+using System.Diagnostics;
+using System.Collections.Specialized;
 
 namespace GraficoSector
 {
@@ -21,6 +23,11 @@ namespace GraficoSector
     {
         //Atributos
         Canvas paleta;
+        StackPanel stackLeyenda;
+        StackPanel stackJuego;
+        StackPanel stackInfo;
+        TextBlock infoNombre;
+        TextBlock infoVentas;
         List<Color> listaColores = new List<Color>();
 
         //Constructor
@@ -35,33 +42,67 @@ namespace GraficoSector
 
             paleta = (Canvas)GetTemplateChild("canvas");
 
-            //Enlazamos el radio de los dos graficos
+            //StackPanel que muestra la informacion del juego seleccionado
+            stackInfo = new StackPanel();
+            infoNombre = new TextBlock();
+            infoVentas = new TextBlock();
+
+            //Definimos el panel de informacion
+            stackInfo.Orientation = Orientation.Vertical;
+            stackInfo.BorderThickness = new Thickness(5);
+            stackInfo.BorderBrush = new SolidColorBrush(Colors.Black);
+
+            stackInfo.Children.Add(infoNombre);
+            stackInfo.Children.Add(infoVentas);
+            paleta.Children.Add(stackInfo);
+
+            //Posicionamos el panel de info
+            Canvas.SetTop(stackInfo, 0);
+            Canvas.SetLeft(stackInfo, 0);
+
+            //Segundo anillo que hara la animacion
             RingSegment rs = (RingSegment)GetTemplateChild("graficoAnimacion");
             rs.Radius = this.radio;
 
-            llenarListaColores();
+            llenarListaColores(); //Cargamos la lista de colores
+
+            //Objeto que almacena la animacion
+            Storyboard storyboard = (Storyboard)GetTemplateChild("sb");
+
             if (paleta != null)
             {
                 TrazarGrafico();
+                storyboard.Begin(); //Comenzamos la animacion
             }
+
+            //Si la lista cambia se vuelve a trazar el grafico
+            ItemSource.CollectionChanged += itemSource_Changed;
+
 
         }
 
         public void TrazarGrafico()
         {
-            if(ItemSource != null)
+
+            if (ItemSource != null)
             {
+                //Inicializamos el StackPanel de la leyenda
+                stackLeyenda = new StackPanel();
+                stackLeyenda.Orientation = Orientation.Vertical;
+                paleta.Children.Add(stackLeyenda);
+
+                Canvas.SetLeft(stackLeyenda, this.Width-50);
+
+                
+
                 //Establecemos el angulo de inicio y fin para posicionar mas tarde cada segmento del grafico
                 int anguloInicio = 0;
                 int anguloFin = 0;
 
                 int totalVentas = contarVentas();
 
-                //Objeto que almacena la animacion
-                Storyboard storyboard = (Storyboard)GetTemplateChild("sb");
-
                 //Recorremos la lista para dibujar cada segmento 
-                for (int i=0; i<ItemSource.Count;  i++ )
+                for (int i = 0; i < ItemSource.Count && i < listaColores.Count; i++)
                 {
                     //Obtenemos el juego actual
                     Videojuego juego = ItemSource[i];
@@ -88,39 +129,86 @@ namespace GraficoSector
                     //Radio
                     segmento.Radius = radio;
 
-                    //Color
+                    //Asignamos el mismo color de la lista al segmento y al objeto
                     segmento.Fill = new SolidColorBrush(listaColores[i]);
-                    
+                    juego.colorJuego = new SolidColorBrush(listaColores[i]);
+
+                    //Etiqueta con el nombre del juego
+                    TextBlock etiquetaJuego = new TextBlock();
+                    etiquetaJuego.Text = juego.nombre;
+
+                    //Rectangulo del mismo color que el segmento
+                    Rectangle cuadroColor = new Rectangle();
+                    cuadroColor.Width = 25;
+                    cuadroColor.Height = 25;
+                    cuadroColor.Margin = new Thickness(0, 0, 6, 0);
+                    cuadroColor.Fill = juego.colorJuego;
+
+                    //StackPanel horizontal que tendra el cuadro de color y el nombre del videojuego
+                    stackJuego = new StackPanel();
+                    stackJuego.Orientation = Orientation.Horizontal;
+                    stackJuego.Margin = new Thickness(0, 0, 0, 6);
+
+                    //Añadimos los componentes a los stackpanel
+                    stackJuego.Children.Add(cuadroColor);
+                    stackJuego.Children.Add(etiquetaJuego);
+                    stackLeyenda.Children.Add(stackJuego);
+
                     //Evento del segmento
                     segmento.Tapped += segmento_Tapped; //Evento del segmento
-                   
+
                     //Añadimos el segmento al canvas
                     paleta.Children.Add(segmento);
 
                     //El angulo de inicio comenzara por el que ha terminado
                     anguloInicio = anguloFin;
-                    
+
                     Canvas.SetLeft(segmento, 0);
                     Canvas.SetTop(segmento, 0);
+
                 }
 
-                //Comenzamos la animacion
-                storyboard.Begin();
+
             }
-           
+
         }
 
         //Evento Tapped
         private void segmento_Tapped(object sender, TappedRoutedEventArgs e)
         {
+            //Obtenemos el segmento recibido
             RingSegment segmento = sender as RingSegment;
 
-            //segmento.Fill = new SolidColorBrush(Colors.Magenta);
+            //Obtenemos el color solido del segmento
+            SolidColorBrush colorSegmento = (SolidColorBrush)segmento.Fill;
+
+            for (int i = 0; i < ItemSource.Count; i++)
+            {
+                Videojuego juego = ItemSource[i];
+
+                //Obtenemos el color solido del del juego y 
+                SolidColorBrush colorJuego = (SolidColorBrush)juego.colorJuego;
+
+                //Comprobamos si el color del segmento es el mismo que el del objeto Videojuego
+                if (colorSegmento.Color == colorJuego.Color)
+                {
+                    Debug.WriteLine("Juego pulsado: " + juego.nombre);
+                    infoNombre.Text = "Videojuego: " + juego.nombre;
+                    infoVentas.Text = "Ventas: " + juego.ventas;
+                    
+
+                }
+
+            }
         }
 
+        private void itemSource_Changed(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            TrazarGrafico();
+        }
         public int contarVentas()
         {
-            int total=0;
+            int total = 0;
 
             foreach (Videojuego juego in ItemSource)
             {
@@ -129,15 +217,16 @@ namespace GraficoSector
 
             return total;
         }
-        
+
         public void llenarListaColores()
         {
+            listaColores.Add(Colors.LightCoral);
+            listaColores.Add(Colors.SteelBlue);
             listaColores.Add(Colors.Red);
+            listaColores.Add(Colors.Aqua);
             listaColores.Add(Colors.Blue);
-            listaColores.Add(Colors.Black);
-            listaColores.Add(Colors.Pink);
+            listaColores.Add(Colors.SeaGreen);
             listaColores.Add(Colors.Green);
-            listaColores.Add(Colors.Khaki);
 
         }
         //Propiedad que define el radio
@@ -152,6 +241,7 @@ namespace GraficoSector
             DependencyProperty.Register("radio", typeof(int), typeof(Grafico), new PropertyMetadata(null));
 
 
+        //Fuente de datos
         public ObservableCollection<Videojuego> ItemSource
         {
             get { return (ObservableCollection<Videojuego>)GetValue(ItemSourceProperty); }

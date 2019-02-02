@@ -29,7 +29,7 @@ namespace GraficoSector
         {
             this.InitializeComponent();
             LlenarLista();
-            //sb.Begin();
+
             //Le damos la fuente de objetos al componente
             graficoPizza.ItemSource = listaJuegos;
 
@@ -37,12 +37,17 @@ namespace GraficoSector
 
         private void LlenarLista()
         {
-            listaJuegos.Add(new Videojuego {nombre="Final Fantasy VIII", ventas=7000});
-            listaJuegos.Add(new Videojuego {nombre = "Resident Evil 3", ventas = 3000});
-            //listaJuegos.Add(new Videojuego { nombre = "Final Fantasy VIII", ventas = 4000 });
-            //listaJuegos.Add(new Videojuego { nombre = "Resident Evil 3", ventas = 10000 });
+            listaJuegos.Add(new Videojuego {nombre="Final Fantasy VIII", ventas=705184});
+            listaJuegos.Add(new Videojuego {nombre = "Resident Evil 3", ventas = 205932});
+            listaJuegos.Add(new Videojuego {nombre = "Pokémon Rojo", ventas = 450000 });
+            listaJuegos.Add(new Videojuego {nombre = "The Legend of Zelda: Ocarina of Time", ventas = 400000 });
             //listaJuegos.Add(new Videojuego { nombre = "Final Fantasy VIII", ventas = 1000 });
             //listaJuegos.Add(new Videojuego { nombre = "Resident Evil 3", ventas =2000 });
+        }
+
+        private void btnInsertar_Click(object sender, RoutedEventArgs e)
+        {
+            listaJuegos.Add(new Videojuego { nombre="prueba", ventas=250000});
         }
     }
 }

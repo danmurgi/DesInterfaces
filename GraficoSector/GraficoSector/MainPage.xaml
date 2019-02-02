@@ -12,7 +12,10 @@
     <Grid>
         <local:Grafico 
             x:Name="graficoPizza"
-            radio="250"/>
+            radio="200"
+            Width="500"
+            Height="500"/>
+        <Button x:Name="btnInsertar" Content="Insertar Videojuego" Width="100" Click="btnInsertar_Click"/>
 
     </Grid>
 </Page>

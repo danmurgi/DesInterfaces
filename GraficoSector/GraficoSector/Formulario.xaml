@@ -9,6 +9,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <StackPanel>
+            <TextBox x:Name="campoNombre" Width="400" HorizontalAlignment="Left" Header="Nombre Videojuego"/>
+            <TextBox x:Name="campoVentas" Width="300" HorizontalAlignment="Left" Header="Ventas"/>
+            <Button x:Name="btnEnviar" Content="Enviar" HorizontalAlignment="Left" Click="btnEnviar_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

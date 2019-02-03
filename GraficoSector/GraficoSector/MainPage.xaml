@@ -13,7 +13,9 @@
         <SplitView x:Name="SplitMenu"
                    Margin="0, 0, 20, 0"
                    IsPaneOpen="True"
-                   DisplayMode="Inline">
+                   DisplayMode="CompactOverlay"
+                   OpenPaneLength="200"
+                   CompactPaneLength="70">
             <SplitView.Pane>
 
                 <StackPanel Orientation="Vertical"
@@ -29,16 +31,15 @@
 
                     <Button x:Name="btnGrafico"
                                 Height="50"
-                            Content="Ver Gráfico"
+                            Content="Gráfico"
                                 Click="btnGrafico_Click"
                                 Background="Transparent"/>
 
                     <Button Name="btnFormulario"
                                 Height="50"
+                            Content="Insertar"
                                 Click="btnFormulario_Click"
                                 Background="Transparent"/>
-
-
                 </StackPanel>
             </SplitView.Pane>
 
@@ -49,13 +50,9 @@
             </SplitView.Content>
         </SplitView>
         
-        <local:Grafico 
-            x:Name="graficoPizza"
-            radio="200"
-            Width="500"
-            Height="500"/>
+        
 
-        <Button x:Name="btnInsertar" Content="Insertar Videojuego" Click="btnInsertar_Click" VerticalAlignment="Top"/>
+        
 
     </Grid>
 </Page>

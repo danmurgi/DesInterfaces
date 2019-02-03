@@ -26,5 +26,23 @@ namespace GraficoSector
         {
             this.InitializeComponent();
         }
+
+        private void btnEnviar_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int numVentas = int.Parse(campoVentas.Text);
+                if(!String.IsNullOrEmpty(campoNombre.Text) && !String.IsNullOrEmpty(campoVentas.Text))
+                {
+                    GestorVideojuegos.listaJuegos.Add(new Videojuego {nombre=campoNombre.Text, ventas=numVentas});
+                    campoNombre.Text = "";
+                    campoVentas.Text = "";
+                }
+
+            }catch(Exception)
+            {
+
+            }
+        }
     }
 }

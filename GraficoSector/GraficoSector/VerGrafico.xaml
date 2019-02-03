@@ -9,6 +9,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <local:Grafico 
+            x:Name="graficoPizza"
+            radio="200"
+            Width="500"
+            Height="500"/>
 
+       <!-- <Button x:Name="btnInsertar" Content="Insertar Videojuego" Click="btnInsertar_Click" VerticalAlignment="Top"/>-->
     </Grid>
 </Page>

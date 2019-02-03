@@ -23,32 +23,23 @@ namespace GraficoSector
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        public ObservableCollection<Videojuego> listaJuegos = new ObservableCollection<Videojuego>();
 
         public MainPage()
         {
             this.InitializeComponent();
+            llenarLista();
             MenuFrame.Navigate(typeof(VerGrafico));
-            LlenarLista();
-
-            //Le damos la fuente de objetos al componente
-            graficoPizza.ItemSource = listaJuegos;
-
         }
 
-        private void LlenarLista()
-        {
-            listaJuegos.Add(new Videojuego {nombre="Final Fantasy VIII", ventas=705184});
-            listaJuegos.Add(new Videojuego {nombre = "Resident Evil 3", ventas = 205932});
-            listaJuegos.Add(new Videojuego {nombre = "Pokémon Rojo", ventas = 450000 });
-            listaJuegos.Add(new Videojuego {nombre = "The Legend of Zelda: Ocarina of Time", ventas = 400000 });
-            //listaJuegos.Add(new Videojuego { nombre = "Final Fantasy VIII", ventas = 1000 });
-            //listaJuegos.Add(new Videojuego { nombre = "Resident Evil 3", ventas =2000 });
-        }
 
-        private void btnInsertar_Click(object sender, RoutedEventArgs e)
+        private void llenarLista()
         {
-            listaJuegos.Add(new Videojuego { nombre="prueba", ventas=250000});
+            GestorVideojuegos.listaJuegos.Add(new Videojuego { nombre = "Final Fantasy VIII", ventas = 705184 });
+            GestorVideojuegos.listaJuegos.Add(new Videojuego { nombre = "Resident Evil 3", ventas = 205932 });
+            GestorVideojuegos.listaJuegos.Add(new Videojuego { nombre = "Pokémon Rojo", ventas = 450000 });
+            GestorVideojuegos.listaJuegos.Add(new Videojuego { nombre = "The Legend of Zelda: Ocarina of Time", ventas = 400000 });
+            //GestorVideojuegos.listaJuegos.Add(new Videojuego { nombre = "Final Fantasy VIII", ventas = 1000 });
+            //GestorVideojuegos.listaJuegos.Add(new Videojuego { nombre = "Resident Evil 3", ventas =2000 });
         }
 
         private void btnGrafico_Click(object sender, RoutedEventArgs e)

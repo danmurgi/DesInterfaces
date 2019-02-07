@@ -19,7 +19,7 @@ using Windows.UI.Xaml.Navigation;
 namespace GraficoSector
 {
     /// <summary>
-    /// Página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
+    /// Pagina vacía que inicializa la lista de objetos y contiene el frame del menu
     /// </summary>
     public sealed partial class MainPage : Page
     {

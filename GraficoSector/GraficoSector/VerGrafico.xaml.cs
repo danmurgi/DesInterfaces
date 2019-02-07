@@ -19,7 +19,7 @@ using GraficoSector;
 namespace GraficoSector
 {
     /// <summary>
-    /// Una página vacía que se puede usar de forma independiente o a la que se puede navegar dentro de un objeto Frame.
+    /// Pagina en la que agragaremos el componente para probarlo
     /// </summary>
     public sealed partial class VerGrafico : Page
     {

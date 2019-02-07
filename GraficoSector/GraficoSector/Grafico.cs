@@ -30,12 +30,17 @@ namespace GraficoSector
         TextBlock infoVentas;
         List<Color> listaColores = new List<Color>();
 
-        //Constructor
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Grafico()
         {
             this.DefaultStyleKey = typeof(Grafico);
         }
 
+        /// <summary>
+        /// Se ejecuta cuando se aplique el componente, inicializara las variables necesarias y llamara al metodo con el que se pintara el grafico
+        /// </summary>
         protected override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -80,6 +85,9 @@ namespace GraficoSector
 
         }
 
+        /// <remarks>
+        /// Metodo que pintara el grafico
+        /// </remarks>
         public void TrazarGrafico()
         {
 
@@ -213,7 +221,7 @@ namespace GraficoSector
             TrazarGrafico();
         }
 
-        public int contarVentas()
+        private int contarVentas()
         {
             int total = 0;
 
@@ -225,7 +233,7 @@ namespace GraficoSector
             return total;
         }
 
-        public void llenarListaColores()
+        private void llenarListaColores()
         {
             listaColores.Add(Colors.LightCoral);
             listaColores.Add(Colors.SteelBlue);
@@ -240,29 +248,34 @@ namespace GraficoSector
             listaColores.Add(Colors.DarkKhaki);
             listaColores.Add(Colors.Gray);
 
-
-
         }
-        //Propiedad que define el radio
+        /// <summary>
+        /// Propiedad que define el radio del grafico
+        /// </summary>
         public int radio
         {
             get { return (int)GetValue(radioProperty); }
             set { SetValue(radioProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for radio.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// Dependencia de mi radio
+        /// </summary>
         public static readonly DependencyProperty radioProperty =
             DependencyProperty.Register("radio", typeof(int), typeof(Grafico), new PropertyMetadata(null));
 
-
-        //Fuente de datos
+        /// <summary>
+        /// Fuente de objetos con la que se pintara el grafico
+        /// </summary>
         public ObservableCollection<Videojuego> ItemSource
         {
             get { return (ObservableCollection<Videojuego>)GetValue(ItemSourceProperty); }
             set { SetValue(ItemSourceProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for ItemSource.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// Dependencia de mi ItemSource
+        /// </summary>
         public static readonly DependencyProperty ItemSourceProperty =
             DependencyProperty.Register("ItemSource", typeof(ObservableCollection<Videojuego>), typeof(Grafico), new PropertyMetadata(null));
 
